@@ -1,0 +1,60 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil /</a><a href="index.php?controller=homeadmin&action=index" title="accueil admin">Administration /</a> Liste des vins </p>
+<h2><img src="assets/img/logo/signeG.svg" alt="signeG"><span> GESTION DES VINS<img src="assets/img/logo/signeD.svg" alt="signeD"></span></h2>
+<div class="list_product">
+  <?php include 'aside_bar.phtml' ?>
+  <div class=table-list>
+    <?php if ($flash->hasMessages() == true) : ?>
+      <aside class="flash">
+        <?php foreach ($flash->fetchMessages() as $message) : ?>
+          <p><?= htmlspecialchars($message) ?></p>
+        <?php endforeach ?>
+      </aside>
+    <?php endif; ?>
+    <h3>LISTES DES VINS</h3>
+    <nav class="pagination">
+      <ul>
+        <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
+        <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>">
+          <a href="index.php?controller=wineadmin&action=index&page=<?= intval($currentPage - 1) ?>" class="page-link">
+            &lt;</a> </li> <?php for ($page = 1; $page <= $pages; $page++) : ?> <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
+        <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
+          <a href="index.php?controller=wineadmin&action=index&page=<?= intval($page) ?>" class="page-link"><?= intval($page) ?></a>
+        </li>
+      <?php endfor ?>
+      <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
+      <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
+        <a href="index.php?controller=wineadmin&action=index&page=<?= intval($currentPage + 1) ?>" class="page-link">&gt;</a>
+      </li>
+      </ul>
+    </nav>
+    <table class="generic-table listproduct">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom du produit</th>
+          <th>Zone</th>
+          <th>Couleur</th>
+          <th colspan="2"><a class="btn" href="index.php?controller=wineadmin&action=insert" title="insertion d'un nouveau vin"><i class="fas fa-plus"></i></a> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($wines as $wine) : ?>
+          <tr>
+            <td><?= htmlspecialchars($wine['id']) ?></td>
+            <td><?= htmlspecialchars($wine['name']) ?></td>
+            <td><?= htmlspecialchars($wine['zoned']) ?></td>
+            <td><?= htmlspecialchars($wine['color']) ?></td>
+            <td class="icone_e"><a href="index.php?controller=wineadmin&action=edit&id=<?= intval($wine['id']); ?>" title="modification d'un vin"><i class="fas fa-pen-nib"></i></a></td>
+            <td class="icone_e"><a href="index.php?controller=wineadmin&action=delete&id=<?= intval($wine['id']); ?>" title="suppression d'un vin" class="supprimer"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="6"><strong>($NB de vin au total :<?= count($wines) ?>)</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+<script src="assets/js/ajax.js"></script>

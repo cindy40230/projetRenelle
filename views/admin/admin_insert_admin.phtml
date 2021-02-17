@@ -1,0 +1,41 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil </a><a href="index.php?controller=homeadmin&action=index" title="accueil admin">Administration /</a> Créer un administrateur </p>
+<h2><img src="assets/img/logo/signeG.svg" alt="signeG"><span> GESTION DES ADMINISTRATEURS<img src="assets/img/logo/signeD.svg" alt="signeD"></span></h2>
+<div class="flex1 list_product">
+  <?php include 'aside_bar.phtml' ?>
+  <div class=table-list>
+    <?php if ($flash->hasMessages() == true) : ?>
+      <div class="flash">
+        <?php foreach ($flash->fetchMessages() as $message) : ?>
+          <p><?= htmlspecialchars($message) ?></p>
+        <?php endforeach ?>
+      </div>
+    <?php endif; ?>
+    <form id="formRegistrationAdmin" class="generic-form registration" action="index.php?controller=useradmin&action=insert" method="POST">
+      <fieldset>
+        <legend><i class="fa fa-book"></i> Identité de l'administrateur </legend>
+        <div id="typePass"></div>
+        <ul>
+          <li>
+            <label for="email">Email:</label>
+            <input id="email" type="email" name="email" required>
+          </li>
+          <li>
+            <label for="lastName">Nom :</label>
+            <input id="lastName" type="text" name="lastName" data-required data-name="Nom">
+          </li>
+          <li>
+            <label for="firstName">Prénom :</label>
+            <input id="firstName" type="text" name="firstName" data-required data-name="Prénom">
+          </li>
+          <li>
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="password">
+          </li>
+        </ul>
+        <button class="btn" type="submit" value="Créer le compte" name="Admin_submit">Créer le compte</button>
+        <a class="btn" href="index.php?controller=useradmin&action=index" title="retour à la liste des administarteurs">RETOUR</a>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<script src="assets/js/verif.js"></script>

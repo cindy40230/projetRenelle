@@ -1,0 +1,29 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil /</a><a href="index.php?controller=homeadmin&action=index" title="accueil admin">Administration /</a> Modifier un vin </p>
+<h2><img src="assets/img/logo/signeG.svg" alt="signeG"><span> GESTION DES VIN<img src="assets/img/logo/signeD.svg" alt="signeD"></span></h2>
+<div class="list_product">
+  <?php include 'aside_bar.phtml' ?>
+  <div class=table-list>
+    <a class="btn" href="index.php?controller=wineadmin&action=insert" title="insertion d'un nouveau vin"><i class="fas fa-plus"></i> Créer un Vin</a>
+    <form method="POST" class="generic-form edit-form">
+      <fieldset>
+        <legend> <i class="fas fa-pen-nib"></i> modifier un vin</legend>
+        <ul>
+          <li>
+            <label for="Name_wine">Nom du vin</label>
+            <input type="text" name="Name_wine" id="Name_wine" placeholder="Nom du vin" value="<?= htmlspecialchars($wine['name']) ?>">
+          </li>
+          <li>
+            <label for="Zoned_wine">zone</label>
+            <input type="text" name="Zoned_wine" id="Zoned_wine" placeholder="zone" value="<?= htmlspecialchars($wine['zoned']) ?>">
+          </li>
+          <li>
+            <label for="Color_wine">couleur</label>
+            <input type="text" name="Color_wine" id="Color_wine" placeholder="couleur" value="<?= htmlspecialchars($wine['color']) ?>">
+          </li>
+        </ul>
+        <button class="btn" type="submit">ENREGISTRER</button>
+        <a class="btn" href="index.php?controller=wineadmin&action=index" title="retour à la liste des vins">RETOUR</a>
+      </fieldset>
+    </form>
+  </div>
+</div>

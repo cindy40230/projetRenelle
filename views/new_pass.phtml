@@ -1,0 +1,86 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil</a> /Modifier mot de passe</p>
+<h2 class="signe"><img src="assets/img/logo/signeG.svg" alt="signeG"><span> <i class="fa fa-lock"></i> MOT DE PASSE OUBLIE <img src="assets/img/logo/signeD.svg" alt="signeD"></span></h2>
+  <form class="generic-form  edit-form verifpass" id="infosuser" action="index.php?controller=login&action=newPass&id=<?=$_GET['id'] ?>" method="POST">
+    <div id="typePass"></div>
+    <ul>
+      <li>
+        <label for="email">Email:</label>
+        <input id="email" type="text" name="email" data-required data-name="email" value="<?= htmlspecialchars($user['email']) ?>">
+      </li>
+      <li hidden>
+        <label for="lastName">Nom :</label>
+        <input id="lastName" type="text" name="lastName" data-required data-name="Nom" value="<?= htmlspecialchars($user['lastName']) ?> ">
+      </li>
+      <li hidden>
+        <label for="firstName">Prénom :</label>
+        <input id="firstName" type="text" name="firstName" data-required data-name="Prénom" value="<?= htmlspecialchars($user['firstName']) ?>">
+      </li>
+      <li hidden>
+        <label for="birthDay">Date de naissance :</label>
+        <select id="birthDay" name="birthDay">
+          <option value="<?= date("d", strtotime(htmlspecialchars($user['birthDay']))) ?>"><?= date("d", strtotime(htmlspecialchars($user['birthDay']))) ?></option>
+          <?php for ($day = 1; $day <= 31; $day++) : ?>
+            <option value="<?= $day ?>"><?= $day ?></option>
+          <?php endfor; ?>
+        </select>
+        <span> / </span>
+        <select name="birthMonth">
+          <option value="<?= date("m", strtotime(htmlspecialchars($user['birthDay']))) ?>"><?= date("m", strtotime(htmlspecialchars($user['birthDay']))) ?></option>
+          <option value="1">Janvier</option>
+          <option value="2">Février</option>
+          <option value="3">Mars</option>
+          <option value="4">Avril</option>
+          <option value="5">Mai</option>
+          <option value="6">Juin</option>
+          <option value="7">Juillet</option>
+          <option value="8">Août</option>
+          <option value="9">Septembre</option>
+          <option value="10">Octobre</option>
+          <option value="11">Novembre</option>
+          <option value="12">Décembre</option>
+        </select>
+        <span> / </span>
+        <select name="birthYear">
+          <option value="<?= date("Y", strtotime(htmlspecialchars($user['birthDay']))) ?>"><?= date("Y", strtotime(htmlspecialchars($user['birthDay']))) ?></option>
+          <?php for ($year = 1940; $year <= date('Y'); $year++) : ?>
+            <option value="<?= $year ?>"><?= $year ?></option>
+          <?php endfor; ?>
+        </select>
+      </li>
+      <li hidden>
+        <label class="textarea" for="address">Adresse :</label>
+        <textarea id="address" name="address" rows="3"><?= htmlspecialchars($user['address']) ?></textarea>
+      </li>
+      <li hidden>
+        <label for="city">Ville :</label>
+        <input id="city" type="text" name="city" value="<?= htmlspecialchars($user['city']) ?>">
+      </li>
+      <li hidden>
+        <label for="zipCode">Code Postal :</label>
+        <input id="zipCode" class="zip-code" type="text" maxlength="5" name="zipCode" data-name="Code postal" data-type="number" value="<?= htmlspecialchars($user['zipCode'])?>">
+      </li>
+      <li hidden>
+        <label for="country">Pays :</label>
+        <input id="country" class="country" type="text" maxlength="10" name="country" value="<?= htmlspecialchars($user['country']) ?>">
+      </li>
+      <li hidden>
+        <label for="phone">Téléphone :</label>
+        <input id="phone" class="phone" type="text" maxlength="10" name="phone" data-name="Téléphone" data-type="number" value="<?= htmlspecialchars($user['phone']) ?>">
+      </li>
+      <li hidden>
+        <label for="admin">Admin :</label>
+        <input id="admin" class="admin" type="text" maxlength="10" name="admin" data-name="Admin" data-type="number" value="<?= $user['admin'] ?>">
+      </li>
+      <li>
+        <label for="password1"> Nouveau mot de passe :</label>
+        <input type="password" id="password1" name="password1" value="">
+      </li>
+      <li>
+        <label for="password2"> confirmer mot de passe :</label>
+        <input type="password" id="password2" name="password2" value="">
+      </li>
+    </ul>
+    <button class="btn" type="submit" value="Créer le compte" name="update_submit">Modifier le compte</button>
+    <a href="index.php?controller=login&action=verifmail" title="retour à la verification mail" class="btn">RETOUR </a>
+  </form>
+<script src="assets/js/verif.js"></script>

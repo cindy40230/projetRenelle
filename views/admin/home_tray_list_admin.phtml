@@ -1,0 +1,46 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil /</a> /<a href="index.php?controller=homeadmin&action=index" title="accueil admin">Administration /</a> Liste des plateaux </p>
+<h2><img src="assets/img/logo/signeG.svg" alt="signeG"><span> GESTION DES PLATEAUX<img src="assets/img/logo/signeD.svg" alt="signeD"></span></h2>
+<div class="list_product">
+  <?php include 'aside_bar.phtml' ?>
+  <div class=table-list>
+    <?php if ($flash->hasMessages() == true) : ?>
+      <aside class="flash">
+        <?php foreach ($flash->fetchMessages() as $message) : ?>
+          <p><?= htmlspecialchars($message) ?></p>
+        <?php endforeach ?>
+      </aside>
+    <?php endif; ?>
+    <h3>LISTES DES PLATEAUX</h3>
+    <table class="generic-table listproduct">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Image</th>
+          <th>Nom du plateau</th>
+          <th colspan="2"><a class="btn" href="index.php?controller=trayadmin&action=insert" title="insertion d'un nouveau plateau"><i class="fas fa-plus"></i></a> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($trays as $tray) : ?>
+          <tr>
+            <td><?= htmlspecialchars($tray['id']) ?></td>
+            <?php if ($tray['picture'] == null) : ?>
+              <td><img class="img_list" src="assets/img/no-photo.png" alt="no-photo"></td>
+            <?php else : ?>
+              <td><img class="img_list" src="assets/img/produit/<?= htmlspecialchars($tray['picture']) ?>" alt="<?= htmlspecialchars($tray['picture']) ?>"> </td>
+            <?php endif ?>
+            <td><a href="index.php?controller=hometray&action=show&id=<?= intval($tray['id']); ?>" title="vue du detail du plateau"><?= htmlspecialchars($tray['name']) ?></a></td>
+            <td class="icone_e"><a href="index.php?controller=trayadmin&action=edit&id=<?= intval($tray['id']); ?>" title="modification d'un plateau"><i class="fas fa-pen-nib"></i></a></td>
+            <td class="icone_e"><a href="index.php?controller=trayadmin&action=delete&id=<?= intval($tray['id']); ?>" title="suppression d'un plateau" class="supprimer"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5"><strong>($NB de plateau au total <?= htmlspecialchars(count($trays)) ?>)</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+<script src="assets/js/ajax.js"></script>

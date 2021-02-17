@@ -1,0 +1,41 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i>Accueil</a> / <a class="active" href="index.php?controller=moncompte&action=index&id=<?= $session->getIdUser() ?>" title="retour a la page d'accueil mon compte">Mon compte /</a> <a href="index.php?controller=moncompte&action=allorder&id=<?= $session->getIdUser() ?>" title="historique des commande">Listes des commandes</a></p>
+<h2 class="signe"><img src="assets/img/logo/signeG.svg" alt="signeG"><span> MON COMPTE<img src="assets/img/logo/signeD.svg" alt="signeD"></span></h2>
+<fieldset class="fieldset">
+    <p class="welcome">Bonjour <strong><?= $session->getFullName() ?></strong> !</p>
+    <a href="index.php?controller=product&action=index" title="aller à la boutique" class="btn btn_compte">ALLER A LA BOUTIQUE</a>
+    <a class="btn btn_compte" href="index.php?controller=moncompte&action=edit&id=<?= $session->getIdUser() ?>" title="vos information pesonnelles">MES INFORMATIONS PERSONNELLES</a>
+    <a href="index.php?controller=moncompte&action=index&id=<?= $session->getIdUser() ?>" title="voir toute vos commande" class="btn btn_compte">RETOUR</a>
+    <h2>Mes commandes</h2>
+    <table class="generic-table product-list table-order ">
+        <thead>
+            <tr>
+                <th>Numéro</th>
+                <th>Date</th>
+                <th>Statut</th>
+                <th class="number">Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if ($orders != null) : ?>
+                <?php foreach ($orders as $order) : ?>
+                    <tr>
+                        <td><?=  htmlspecialchars($order['id_order']) ?></td>
+                        <td><?=  htmlspecialchars($order['orderDate']) ?></td>
+                        <td><?=  htmlspecialchars($order['name']) ?></td>
+                        <td class="number"><?=  htmlspecialchars($order['TotalAmount']) ?> €</td>
+                        <td class='number'><a href="index.php?controller=moncompte&action=orderDetail&id=<?= intval($order['id_order']) ?>" title="detail de la commande" class="btn">DETAIL</a></td>
+                    </tr>
+                <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php else : ?>
+    <div class="form-basket generic-form ">
+        <fieldset>
+            <legend>Récapitulatif commande</legend>
+            <p>Vous n'avez pas passé de commande.</p>
+            <p>Visitez la boutique et faites votre choix.</p>
+        </fieldset>
+    </div>
+<?php endif ?>
+</fieldset>

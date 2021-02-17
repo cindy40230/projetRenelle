@@ -1,0 +1,23 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil </a> /Accueil Articles</p>
+<h2><img src="assets/img/logo/signeG.svg" alt="signeG"><span> LES ARTICLES</span><img src="assets/img/logo/signeD.svg" alt="signeD"></h2>
+<div class=" comande-en-ligne">
+  <?php include 'bar_blog.phtml' ?>
+  <div class="flex-r page-produit" id="sectionarticle">
+    <?php foreach ($posts as $post) : ?>
+      <article class="blog_article post_blog flex-cc flex-js_s-b post">
+        <p> <?= htmlspecialchars($post['categoryName']); ?></p>
+        <h3><a href="index.php?controller=blog&action=show&id=<?= intval($post['id']); ?>" title="detail du produit">
+            <?= htmlspecialchars($post['title']); ?></a></h3>
+        <?php if ($post['picture'] == null) : ?>
+        <img class="img_list" src="assets/img/no-photo.png" alt="pas d'image">
+        <?php else : ?>
+        <img class="" src="assets/img/upload/<?= htmlspecialchars($post['picture']); ?>" alt="<?= htmlspecialchars($post['picture']); ?>">
+        <?php endif ?>
+        <p> <?= htmlspecialchars($post['createdDate']); ?></p>
+        <hr>
+        <p><?= substr(htmlspecialchars($post['description']), 0,120);?></p>
+        <a href="index.php?controller=blog&action=show&id=<?= intval($post['id']); ?>">Lire l'article >>></a>
+      </article>
+    <?php endforeach; ?>
+  </div>
+</div>

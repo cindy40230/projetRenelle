@@ -1,0 +1,149 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil /</a><a href="index.php?controller=homeadmin&action=index" title="accueil admin">Administration /</a> Modifier un plateau </p>
+<h2><img src="assets/img/logo/signeG.svg" alt="signeG"><span> GESTION DES PLATEAUX<img src="assets/img/logo/signeD.svg" alt="signeD"></span></h2>
+<div class="list_product">
+  <?php include 'aside_bar.phtml' ?>
+  <div class=table-list>
+    <a class="btn" href="index.php?controller=trayadmin&action=insert" title="insertion d'un nouveau plateau"><i class="fas fa-plus"></i> Créer un plateau</a>
+    <?php if ($flash->hasMessages() == true) : ?>
+      <aside class="flash">
+        <?php foreach ($flash->fetchMessages() as $message) : ?>
+          <p><?= htmlspecialchars($message) ?></p>
+        <?php endforeach ?>
+      </aside>
+    <?php endif; ?>
+    <form method="POST" class="generic-form edit-form" enctype="multipart/form-data">
+      <fieldset>
+        <legend> <i class="fas fa-pen-nib"></i>créer un plateau</legend>
+        <ul>
+          <li>
+            <label for="Name_tray">Nom du plateau</label>
+            <input type="text" name="Name_tray" id="Name_tray" placeholder="Nom du plateau" value="<?= htmlspecialchars($trs['name']) ?>">
+          </li>
+          <li>
+            <label for="Description_tray">Description du produit</label>
+            <textarea name="Description_tray" id="Description_tray" placeholder=""><?= htmlspecialchars($trs['description']) ?></textarea>
+          </li>
+          <li>
+            <label for="Name_product1">Produit1</label>
+            <select name="Name_product1" id="Name_product1">
+              <?php foreach ($products as $product) : ?>
+                <?php if ($product['id'] == $trs['product1']) : ?>
+                  <option value="<?= htmlspecialchars($product['id']) ?>" selected>
+                    <?= htmlspecialchars($product['name']) ?>
+                  </option>
+                <?php else : ?>
+                  <option value="<?= htmlspecialchars($product['id']) ?>">
+                    <?= htmlspecialchars($product['name']) ?>
+                  </option>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="Name_product2">Produit2</label>
+            <select name="Name_product2" id="Name_product2">
+              <?php foreach ($products as $product) : ?>
+                <?php if ($product['id'] == $trs['product2']) : ?>
+                  <option value="<?= htmlspecialchars($product['id']) ?>" selected>
+                    <?= htmlspecialchars($product['name']) ?>
+                  </option>
+                <?php else : ?>
+                  <option value="<?= htmlspecialchars($product['id']) ?>">
+                    <?= htmlspecialchars($product['name']) ?>
+                  </option>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="Name_product3">Produit3</label>
+            <select name="Name_product3" id="Name_product3">
+              <?php foreach ($products as $product) : ?>
+                <?php if ($product['id'] == $trs['product3']) : ?>
+                  <option value="<?= htmlspecialchars($product['id']) ?>" selected>
+                    <?= htmlspecialchars($product['name']) ?>
+                  </option>
+                <?php else : ?>
+                  <option value="<?= htmlspecialchars($product['id']) ?>">
+                    <?= htmlspecialchars($product['name']) ?>
+                  </option>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="Name_product4">Produit4</label>
+            <select name="Name_product4" id="Name_product4">
+              <?php if ($tray['product4'] == NULL) : ?>
+                <option value="">NULL</option>
+              <?php endif; ?>
+              <?php foreach ($products as $product) : ?>
+                <?php if ($product['id'] == $trs['product4']) : ?>
+                  <option value="<?= htmlspecialchars($product['id']) ?>" selected>
+                    <?= htmlspecialchars($product['name']) ?>
+                  </option>
+                <?php else : ?>
+                  <option value="<?= htmlspecialchars($product['id']) ?>">
+                    <?= htmlspecialchars($product['name']) ?>
+                  </option>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="Name_product5">Produit5</label>
+            <select name="Name_product5" id="Name_product5">
+              <?php if ($tray['product5'] == NULL) : ?>
+                <option value="">NULL</option>
+              <?php endif; ?>
+              <?php foreach ($products as $product) : ?>
+                <?php if ($product['id'] == $trs['product5']) : ?>
+                  <option value="<?= htmlspecialchars($product['id']) ?>" selected>
+                    <?= htmlspecialchars($product['name']) ?>
+                  </option>
+                <?php else : ?>
+                  <option value="<?= htmlspecialchars($product['id']) ?>">
+                    <?= htmlspecialchars($product['name']) ?>
+                  </option>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="QuantityInStock">Quantité en stock</label>
+            <input type="text" name="QuantityInStock" id="QuantityInStock" placeholder="quantité en stock" value="<?= $trs['quantityInStock'] ?>">
+          </li>
+          <li>
+            <label for="weight_tray">Poids</label>
+            <select name="weight_tray" id="weight_tray">
+              <?php foreach ($weights as $weight) : ?>
+                <?php if ($weight['id'] == $trs['weight']) : ?>
+                  <option value="<?= htmlspecialchars($weight['id']) ?>" selected>
+                    <?= htmlspecialchars($weight['name']) ?>
+                  </option>
+                <?php else : ?>
+                  <option value="<?= htmlspecialchars($weight['id']) ?>">
+                    <?= htmlspecialchars($weight['name']) ?>
+                  </option>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="BuyPrice">Prix d'achat</label>
+            <input type="text" name="BuyPrice" id="BuyPrice" placeholder="prix d'achat" value="<?= $trs['buyPrice'] ?>">
+          </li>
+          <li>
+            <label for="SalePrice">Prix de vente</label>
+            <input type="text" name="SalePrice" id="SalePrice" placeholder="prix de vente" value="<?= $trs['salePrice'] ?>">
+          </li>
+          <li>
+            <input type="file" name="Picture">
+          </li>
+        </ul>
+        <button class="btn" type="submit">ENREGISTRER</button>
+        <a class="btn" href="index.php?controller=trayadmin&action=index" title="retour à la liste des plateaux">RETOUR</a>
+      </fieldset>
+    </form>
+  </div>
+</div>

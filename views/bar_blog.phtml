@@ -1,0 +1,22 @@
+<aside class="bar-select bar_blog generic"> 
+    <h2>Le Blog</h2>
+    <p> Le fromage,on n'a pas fini d'en Manger !</p>
+    <p>Retrouvez ici tous nos articles : de savoureuses recettes,des conseils ,les actualités et les évènements de la Fromagerie Renelle...</p>
+    <h3 id="bonneLecture">Bonne Lecture !</h3>
+    <ul>
+    <?php foreach ($categorys as $category) : ?>
+      <li><a href="index.php?controller=blog&action=getAllByCategory&id=<?= intval($category['id']); ?>"><?=htmlspecialchars($category['name']) ?></a></li>
+    <?php endforeach; ?>
+    </ul>  
+    <div class="flex-cc exclusivite"> 
+      <h2>L'Exclusivité du mois</h2>
+      <p><?=  htmlspecialchars($esclusivite['name']);?></p>
+      <img class="img-home" src="assets/img/produit/<?=  htmlspecialchars($esclusivite['picture']);?>" alt="plateau entre amis">     
+        <ul class="prix">
+          <li><i> Prix : <?=  htmlspecialchars($esclusivite['salePrice']);?> € </i></li>
+          <li><i> Poids : <?=  htmlspecialchars($esclusivite['weightName']);?></i></li>
+        </ul>    
+        <a class="btn" href="index.php?controller=product&action=show&id=<?=  htmlspecialchars($esclusivite['id']); ?>" title="detail du produit ">JE DECOUVRE</a>
+    </div>
+</aside>
+

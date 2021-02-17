@@ -1,0 +1,131 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à la ligne"><i class="fa fa-home"></i> Accueil /</a><a href="index.php?controller=moncompte&action=index&id=<?= $session->getIdUser() ?>" title="vue générale du compte"> Mon compte /</a><a href="index.php?controller=moncompte&action=edit&id=<?= $session->getIdUser() ?>" title="informations personelles"> Mes informations personnelles</a></p>
+<h2><img src="assets/img/logo/signeG.svg" alt="signeG"><span> MON COMPTE<img src="assets/img/logo/signeD.svg" alt="signeD"></span></h2>
+<section class="infop">
+	<fieldset class="fieldset">
+		<p class="welcome">Bonjour <strong><?= $session->getFullName() ?></strong> !</p>
+		<a href="index.php?controller=product&action=index" title="accueil des produits" class="btn btn_compte">ALLER A LA BOUTIQUE</a>
+		<a href="index.php?controller=moncompte&action=allorder&id=<?= $session->getIdUser() ?>" title="voir toute vos commande" class="btn btn_compte">VOIR TOUTES LES COMMANDES</a>
+		<a href="index.php?controller=moncompte&action=index&id=<?= $session->getIdUser() ?>" title="accueil mon compte" class="btn btn_compte">RETOUR</a>
+		<h2>Mes informations personnelles</h2>
+		<div class="generic-form showForm">
+			<fieldset>
+				<legend><i class="fa fa-book"></i> Identité et coordonnées</legend>
+				<table id="table-form">
+					<tr>
+						<td>Email : </td>
+						<td><?= htmlspecialchars($user['email']) ?></td>
+					</tr>
+					<tr>
+						<td>Nom : </td>
+						<td><?= htmlspecialchars($user['lastName']) ?></td>
+					</tr>
+					<tr>
+						<td>Prénom : </td>
+						<td><?= htmlspecialchars($user['firstName']) ?></td>
+					</tr>
+					<tr>
+						<td>Date de naissance : </td>
+						<td><?= htmlspecialchars($user['birthDay']) ?></td>
+					</tr>
+					<tr>
+						<td>Adresse : </td>
+						<td><?= htmlspecialchars($user['address']) ?></td>
+					</tr>
+					<tr>
+						<td>Ville : </td>
+						<td><?= htmlspecialchars($user['city']) ?></td>
+					</tr>
+					<tr>
+						<td>Code Postal : </td>
+						<td><?= htmlspecialchars($user['zipCode']) ?></td>
+					</tr>
+					<tr>
+						<td>Pays : </td>
+						<td><?= htmlspecialchars($user['country']) ?></td>
+					</tr>
+					<tr>
+						<td>Téléphone : </td>
+						<td><?= htmlspecialchars($user['phone'])?></td>
+					</tr>
+				</table>
+				<button id="showForm" class="btn" value="modifier le compte">Modifier le compte</button>
+			</fieldset>
+		</div>
+		<form class="generic-form  edit-form " id="infosuser" method="POST">
+			<fieldset>
+				<legend><i class="fa fa-book"></i> Identité et coordonnées</legend>
+				<ul>
+					<li>
+						<label for="email">Email:</label>
+						<input id="email" type="text" name="email" data-required data-name="email" value="<?= htmlspecialchars($user['email']) ?>">
+					</li>
+					<li>
+						<label for="lastName">Nom :</label>
+						<input id="lastName" type="text" name="lastName" data-required data-name="Nom" value="<?= htmlspecialchars($user['lastName']) ?> ">
+					</li>
+					<li>
+						<label for="firstName">Prénom :</label>
+						<input id="firstName" type="text" name="firstName" data-required data-name="Prénom" value="<?= htmlspecialchars($user['firstName']) ?>">
+					</li>
+					<li>
+						<label for="birthDay">Date de naissance :</label>
+						<select id="birthDay" name="birthDay">
+							<option value="<?= date("d", strtotime(htmlspecialchars($user['birthDay']))) ?>"><?= date("d", strtotime(htmlspecialchars($user['birthDay']))) ?></option>
+							<?php for ($day = 1; $day <= 31; $day++) : ?>
+								<option value="<?= $day ?>"><?= $day ?></option>
+							<?php endfor; ?>
+						</select>
+						<span> / </span>
+						<select name="birthMonth">
+							<option value="<?= date("m", strtotime(htmlspecialchars($user['birthDay']))) ?>"><?= date("m", strtotime(htmlspecialchars($user['birthDay']))) ?></option>
+							<option value="1">Janvier</option>
+							<option value="2">Février</option>
+							<option value="3">Mars</option>
+							<option value="4">Avril</option>
+							<option value="5">Mai</option>
+							<option value="6">Juin</option>
+							<option value="7">Juillet</option>
+							<option value="8">Août</option>
+							<option value="9">Septembre</option>
+							<option value="10">Octobre</option>
+							<option value="11">Novembre</option>
+							<option value="12">Décembre</option>
+						</select>
+						<span> / </span>
+						<select name="birthYear">
+							<option value="<?= date("Y", strtotime(htmlspecialchars($user['birthDay']))) ?>"><?= date("Y", strtotime(htmlspecialchars($user['birthDay']))) ?></option>
+							<?php for ($year = 1940; $year <= date('Y'); $year++) : ?>
+								<option value="<?= $year ?>"><?= $year ?></option>
+							<?php endfor; ?>
+						</select>
+					</li>
+					<li>
+						<label class="textarea" for="address">Adresse :</label>
+						<textarea id="address" name="address" rows="3"><?= htmlspecialchars($user['address']) ?></textarea>
+					</li>
+					<li>
+						<label for="city">Ville :</label>
+						<input id="city" type="text" name="city" value="<?= htmlspecialchars($user['city']) ?>">
+					</li>
+					<li>
+						<label for="zipCode">Code Postal :</label>
+						<input id="zipCode" class="zip-code" type="text" maxlength="5" name="zipCode" data-name="Code postal" data-type="number" value="<?= htmlspecialchars($user['zipCode']) ?>">
+					</li>
+					<li>
+						<label for="country">Pays :</label>
+						<input id="country" class="country" type="text" maxlength="10" name="country" value="<?= htmlspecialchars($user['country']) ?>">
+					</li>
+					<li>
+						<label for="phone">Téléphone :</label>
+						<input id="phone" class="phone" type="text" maxlength="10" name="phone" data-name="Téléphone" data-type="number" value="<?= htmlspecialchars($user['phone']) ?>">
+					</li>
+					<li hidden>
+						<label for="password">Mot de passe :</label>
+						<input type="password" id="password" name="password" value="<?= htmlspecialchars($user['password']) ?>">
+					</li>
+				</ul>
+				<button class="btn" type="submit" value="Créer le compte" name="update_submit">Modifier le compte</button>
+			</fieldset>
+		</form>
+	</fieldset>
+</section>

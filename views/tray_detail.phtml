@@ -1,0 +1,72 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil /</a> <a href="index.php?controller=hometray&action=index" title="accueil plateau evenement"> Plateau évènement /</a> <?=htmlspecialchars( $trs['name']); ?></p>
+<article class="plateau">
+  <h2><img src="assets/img/logo/signeG.svg" alt="signeG"><span><?= htmlspecialchars($trs['name']); ?><img src="assets/img/logo/signeD.svg" alt="signeD"></span></h2>
+  <form method="post" class="basket show">
+    <div class="plateauDetail">
+      <img src="assets/img/produit/<?= htmlspecialchars($trs['picture']); ?>" alt="<?= htmlspecialchars($trs['name']); ?>">
+      <div class=" description">
+        <p><?= htmlspecialchars($trs['description']); ?></p>
+      </div>
+      <div class="prix">
+        <ul>
+          <li><i> Prix : <?= htmlspecialchars($trs['salePrice']); ?> € </i></li>
+          <li><i><?= htmlspecialchars($trs['WeightName']); ?> </i></li>
+        </ul>
+        <ul>
+          <li><i>Qté</i></li>
+          <li><input name="quantite" class="quantite" type="number" min="1" max="<?= htmlspecialchars($trs['quantityInStock'])?>" value="1" required>
+          <input type="hidden" name="picture" value="assets/img/produit/<?= htmlspecialchars($trs['picture']); ?>">
+          <input type="hidden" name="productName" value="<?= htmlspecialchars($trs['name']); ?>">
+          <input type="hidden" name="productId" value="<?= htmlspecialchars($trs['id']); ?>">
+          <input type="hidden" name="salePrice" value="<?= htmlspecialchars($trs['salePrice']); ?>">
+          <input type="hidden" name="weight" value="<?= htmlspecialchars($trs['WeightName']); ?>">
+          <input type="hidden" name="type" value="tray">
+          </li>
+        </ul>
+        <button class="btn button_ajout" type="submit">AJOUTER</button>
+      </div>
+    </div>
+  </form>
+  <div class="contenu">
+    <h2>CONTENU DE VOTRE PLATEAU "<?= htmlspecialchars($trs['name']); ?>" </h2>
+  </div>
+  <section class="wrap">
+    <div class=" cheese">
+      <h3><i><?= htmlspecialchars($tra['productName']); ?></i></h3>
+      <img src="assets/img/produit/<?= htmlspecialchars($tra['productPicture']); ?>" alt="<?= htmlspecialchars($tra['productName']); ?>">
+    </div>
+    <div class="cheese">
+      <h3><i><?= $tray1['productName']; ?></i></h3>
+      <img src="assets/img/produit/<?= htmlspecialchars($tray1['productPicture']); ?>" alt="<?= htmlspecialchars($tray['productName']); ?>">
+    </div>
+    <?php if ($tray2 == null) : ?>
+      <div class="hidden"></div>
+    <?php else : ?>
+      <div class=" cheese">
+        <h3><i><?= $tray2['productName']; ?></i></h3>
+        <img src="assets/img/produit/<?= htmlspecialchars($tray2['productPicture']); ?>" alt="<?= htmlspecialchars($tray['productName']); ?>">
+      </div>
+    <?php endif ?>
+    <?php if ($tray3 == null) : ?>
+      <div class="hidden"></div>
+    <?php else : ?>
+      <div class="cheese">
+        <h3><i><?= $tray3['productName']; ?></i></h3>
+        <img src="assets/img/produit/<?= htmlspecialchars($tray3['productPicture']); ?>" alt="<?= htmlspecialchars($tray['productName']); ?>">
+      </div>
+    <?php endif ?>
+    <?php if ($tray4 == null) : ?>
+      <div class="hidden"></div>
+    <?php else : ?>
+      <div class="cheese">
+        <h3><i><?= $tray4['productName']; ?></i></h3>
+        <img src="assets/img/produit/<?= htmlspecialchars($tray4['productPicture']); ?>" alt="<?= htmlspecialchars($tray['productName']); ?>">
+      </div>
+    <?php endif ?>
+    </section>
+</article>
+<div id="info">
+  <p>Produit ajouter à votre panier</p>
+  <a href="index.php?controller=product&action=index" title="accueil du produit" class="btn">POURSUIVRE</a>
+  <a href="index.php?controller=basket&action=index" title="affichage du panier" class="btn">ALLER AU PANIER</a>
+</div>

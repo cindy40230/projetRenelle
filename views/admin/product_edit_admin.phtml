@@ -1,0 +1,183 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil /</a><a href="index.php?controller=homeadmin&action=index" title="accueil admin">Administration /</a> Modifier un produit </p>
+<h2><img src="assets/img/logo/signeG.svg" alt="signeG"><span> GESTION DES PRODUITS<img src="assets/img/logo/signeD.svg" alt="signeD"></span></h2>
+<div class="list_product">
+  <?php include 'aside_bar.phtml' ?>
+  <div class=table-list>
+    <a class="btn" href="index.php?controller=homeadmin&action=insert" title="insertion d'un nouveau produit"><i class="fas fa-plus"></i> Créer un produit</a>
+    <form method="POST" class="generic-form edit-form" enctype="multipart/form-data">
+      <fieldset>
+        <legend> <i class="fas fa-pen-nib"></i> modifier un produit</legend>
+        <ul>
+          <li>
+            <label for="Name_product">Nom du produit</label>
+            <input type="text" name="Name_product" id="Name_product" placeholder="Nom du produit" value="<?= htmlspecialchars($product['name']) ?>">
+          </li>
+          <li>
+            <label for="Description_product">Description du produit</label>
+            <textarea name="Description_product" id="Description_product" placeholder=""><?= htmlspecialchars($product['description']) ?></textarea>
+          </li>
+          <li>
+            <label for="Name_milk">Type de lait</label>
+            <select name="Name_milk" id="Name_milk">
+              <?php foreach ($milks as $milk) : ?>
+                <?php if ($milk['id'] == $product['id_milk']) : ?>
+                  <option value="<?= htmlspecialchars($milk['id']) ?>" selected>
+                    <?= htmlspecialchars($milk['name']) ?>
+                  </option>
+                <?php else : ?>
+                  <option value="<?= $milk['id'] ?>">
+                    <?= htmlspecialchars($milk['name']) ?>
+                  </option>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="Name_dough">Type de pâte</label>
+            <select name="Name_dough" id="Name_dough">
+              <?php foreach ($doughs as $dough) : ?>
+                <?php if ($dough['id'] == $product['id_dough']) : ?>
+                  <option value="<?= htmlspecialchars($dough['id']) ?>" selected>
+                    <?= htmlspecialchars($dough['name']) ?>
+                  </option>
+                <?php else : ?>
+                  <option value="<?= htmlspecialchars($dough['id']) ?>">
+                    <?= htmlspecialchars($dough['name']) ?>
+                  </option>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="Name_shape">forme</label>
+            <select name="Name_shape" id="Name_shape">
+              <?php foreach ($shapes as $shape) : ?>
+                <?php if ($shape['id'] == $product['id_shape']) : ?>
+                  <option value="<?= htmlspecialchars($shape['id']) ?>" selected>
+                    <?= htmlspecialchars($shape['name']) ?>
+                  </option>
+                <?php else : ?>
+                  <option value="<?= htmlspecialchars($shape['id']) ?>">
+                    <?= htmlspecialchars($shape['name']) ?>
+                  </option>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="Name_knife">Type de couteau</label>
+            <select name="Name_knife" id="Name_knife">
+              <?php foreach ($knifes as $knife) : ?>
+                <?php if ($knife['id'] == $product['id_knife']) : ?>
+                  <option value="<?= htmlspecialchars($knife['id']) ?>" selected>
+                    <?= htmlspecialchars($knife['name']) ?>
+                  </option>
+                <?php else : ?>
+                  <option value="<?= htmlspecialchars($knife['id']) ?>">
+                    <?= htmlspecialchars($knife['name']) ?>
+                  </option>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="Name_region">Région</label>
+            <select name="Name_region" id="Name_region">
+              <?php foreach ($regions as $region) : ?>
+                <?php if ($region['id'] == $product['id_region']) : ?>
+                  <option value="<?= htmlspecialchars($region['id']) ?>" selected>
+                    <?= htmlspecialchars($region['name']) ?>
+                  </option>
+                <?php else : ?>
+                  <option value="<?= htmlspecialchars($region['id']) ?>">
+                    <?= htmlspecialchars($region['name']) ?>
+                  </option>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="Poids">Poids</label>
+            <select name="Poids" id="Poids">
+              <?php foreach ($weights as $weight) : ?>
+                <?php if ($weight['id'] == $product['weight']) : ?>
+                  <option value="<?= htmlspecialchars($weight['id']) ?>" selected>
+                    <?= htmlspecialchars($weight['name']) ?>
+                  </option>
+                <?php else : ?>
+                  <option value="<?= htmlspecialchars($weight['id']) ?>">
+                    <?= htmlspecialchars($weight['name']) ?>
+                  </option>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="Name_wine1">Vin 1</label>
+            <select name="Name_wine1" id="Name_wine1">
+
+              <?php if ($product['id_wine1'] == NULL) : ?>
+                <option value="">NULL</option>
+              <?php endif; ?>
+              <?php foreach ($wines as $wine) : ?>
+                <?php if ($wine['id'] == $product['id_wine1']) : ?>
+                  <option value="<?= htmlspecialchars($wine['id']) ?>" selected>
+                    <?= htmlspecialchars($wine['name']) ?>
+                  </option>
+                <?php else : ?>
+                  <option value="<?= htmlspecialchars($wine['id']) ?>">
+                    <?= htmlspecialchars($wine['name']) ?>
+                  </option>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="Name_wine2">Vin 2</label>
+            <select name="Name_wine2" id="Name_wine2">
+              <?php if ($product['id_wine2'] == NULL) : ?>
+                <option value="">NULL</option>
+              <?php endif; ?>
+              <?php foreach ($wines as $wine) : ?>
+                <?php if ($wine['id'] == $product['id_wine2']) : ?>
+                  <option value="<?= htmlspecialchars($wine['id']) ?>" selected>
+                    <?= htmlspecialchars($wine['name']) ?>
+                  </option>
+                <?php else : ?>
+                  <option value="<?= htmlspecialchars($wine['id']) ?>">
+                    <?= htmlspecialchars($wine['name']) ?>
+                  </option>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="QuantityInStock">Quantité en stock</label>
+            <input type="text" name="QuantityInStock" id="QuantityInStock" value="<?= htmlspecialchars($product['quantityInStock']) ?>">
+          </li>
+          <li>
+            <label for="BuyPrice">Prix d'achat</label>
+            <input type="text" name="BuyPrice" id="BuyPrice" value="<?= htmlspecialchars($product['buyPrice']) ?>">
+          </li>
+          <li>
+            <label for="SalePrice">Prix de vente</label>
+            <input type="text" name="SalePrice" id="SalePrice" value="<?= htmlspecialchars($product['salePrice']) ?>">
+          </li>
+          <li>
+            <label for="exclusivity">exclusivité</label>
+            <input type="text" name="exclusivity" id="exclusivity" value="<?= htmlspecialchars($product['exclusivity']) ?>">
+          </li>
+          <li>
+            <label for="Conseil_degustation">Conseil dégustation</label>
+            <textarea name="Conseil_degustation" id="Conseil_degustation"><?= htmlspecialchars($product['conseil_degustation']) ?></textarea>
+          </li>
+          <li>
+            <input type="file" name="Picture">
+          </li>
+        </ul>
+        <button class="btn" type="submit">ENREGISTRER</button>
+        <a class="btn" href="index.php?controller=homeadmin&action=index" title="retour à la liste des produits">RETOUR</a>
+      </fieldset>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil /</a><a href="index.php?controller=homeadmin&action=index" title="accueil admin">Administration /</a> Liste des régions </p>
+<h2><img src="assets/img/logo/signeG.svg" alt="signeG"><span> GESTION DES REGIONS<img src="assets/img/logo/signeD.svg" alt="signeD"></span></h2>
+<div class="list_product">
+  <?php include 'aside_bar.phtml' ?>
+  <div class=table-list>
+    <?php if ($flash->hasMessages() == true) : ?>
+      <aside class="flash">
+        <?php foreach ($flash->fetchMessages() as $message) : ?>
+          <p><?= htmlspecialchars($message) ?></p>
+        <?php endforeach ?>
+      </aside>
+    <?php endif; ?>
+    <h3>LISTES DES REGIONS</h3>
+    <table class="generic-table listproduct">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom de la région</th>
+          <th>Image</th>
+          <th><a class="btn" href="index.php?controller=regionadmin&action=insert" title="insertion d'une nouvelle région"><i class="fas fa-plus"></i></a> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($regions as $region) : ?>
+          <tr>
+            <td><?= htmlspecialchars($region['id']) ?></td>
+            <td><?= htmlspecialchars($region['name']) ?></td>
+            <?php if ($region['picture'] == null) : ?>
+              <td><img class="img_list" src="assets/img/no-photo.png" alt="no-photo"></td>
+            <?php else : ?>
+              <td><img class="img_list" src="assets/img/region/<?= htmlspecialchars($region['picture']) ?>" alt="<?= htmlspecialchars($region['picture']) ?>"></td>
+            <?php endif ?>
+            <td class="icone_e"><a href="index.php?controller=regionadmin&action=edit&id=<?= intval($region['id']); ?>" title="modification de la region"><i class="fas fa-pen-nib"></i></a></td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4"><strong>($NB de région au total:<?= count($regions) ?>)</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

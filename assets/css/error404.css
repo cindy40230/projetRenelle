@@ -1,0 +1,85 @@
+/*-----------page 404----*/
+html {
+  height: 100%;
+}
+body {  
+  height: 100%;
+  background: url('../../assets/img/vache21.jpg')no-repeat top;
+  background-size: cover ;  
+  overflow: hidden;	
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+.text h1{
+  color: #2f4041;
+	margin-top: -8rem;
+  font-size: 15rem;
+	text-align: center;
+	text-shadow: -0.5rem 0.5rem 0 rgba(0,0,0,0.7), -1rem 0 rgba(0,0,0,0.4), -1.5rem 1.5rem 0 rgba(0,0,0,0.2);
+	font-family: monospace;
+  font-weight: bold;
+}
+.text h2{
+  color: gray;
+  font-size: 5rem;
+	text-shadow: -0.3rem 0.3rem 0  rgba(0,0,0,0.7);
+	text-align: center;
+	margin-top: -8rem;
+	font-family: monospace;
+  font-weight: bold;
+}
+.text h3{
+  color: white;
+	margin-left: 30px;
+  font-size: 2rem;
+	text-shadow: -0.3rem 0.3rem 0 rgba(0,0,0,0.7);
+	margin-top: -2rem;
+	font-family: monospace;
+  font-weight: bold;
+}
+.text p
+{
+  color: white;
+  font-size: 2rem;
+  text-shadow: -0.3rem 0.3rem 0 rgba(0,0,0,0.7);
+}
+.text{
+  text-align:center;
+}
+.text a
+{
+  font-size: 1em;
+  color: white;
+  text-shadow: -0.3rem 0.3rem 0 rgba(0,0,0,0.7);
+}
+.circles .circle.big {
+width: 20rem;
+height: 20rem;
+border-radius: 50%;
+background: gray;
+position: absolute;
+z-index: 1;
+top: 15rem;
+right: 0;
+animation: 8s bigmove infinite;	
+-webkit-animation: 8s bigmove infinite;
+animation-delay: 3s;
+-webkit-animation-delay: 1s;
+}
+@-webkit-keyframes bigmove {
+  0% { top: 0px; right: 4%; opacity: 0.3; }
+  25% { top: 100px; right: 40%; opacity:0.8; }
+  50% { top: 240px; right: 45%; opacity:0.3; }
+  75% { top: 100px; right: 35%;  opacity:0.4; }
+  100% { top: 0px; right: 4%; opacity: 0.5; }
+}
+@keyframes bigmove {
+0% { top: 0px; right: 4%; opacity: 0.3; }
+25% { top: 100px; right: 40%; opacity:0.8; }
+50% { top: 240px; right: 45%; opacity:0.3; }
+75% { top: 100px; right: 35%;  opacity:0.4; }
+100% { top: 0px; right: 4%; opacity: 0.5; }
+}
+

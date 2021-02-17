@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>Fromagerie Renelle</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Feuilles de styles de l'application -->
+	<link rel="stylesheet" href="assets/css/normalize.css">
+	<link rel="stylesheet" href="assets/css/error404.css">
+</head>
+<body>
+	<main>
+		<div class="circles">
+			<div class="text">
+				<h1> 404 </h1>
+				<h2>Meuhh!</h2>
+				<h3> Oups ! Nous ne trouvons pas ce que vous cherchez , il fait trés sombre ici !!</h3>
+				<p><?= $error ?></p>
+				<a class="btn" href="index.php?controller=home&action=index" title="retour à l'accueil">Retour à l'accueil</a>
+			</div>
+			<span class="circle big"></span>
+		</div>
+	</main>
+</body>
+</html>

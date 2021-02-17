@@ -1,0 +1,26 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil </a> </p>
+<article class="presentation">
+    <h1><img class="signe" src="assets/img/logo/signeG.svg" alt="signeG"><span>La fromagerie Renelle, Fromagerie en ligne de haute Gastronomie <img class="signe" src="assets/img/logo/signeD.svg" alt="signeD"></span></h1>
+    <p>La Fromagerie Renelle a sélectionné pour vous plusieurs fromages d'excellence parmi les plus célèbres,ainsi que de très belles découvertes plus rares au goût unique.
+        Découvrez des variétés confidentielles que vous ne trouverez nulle part ailleurs. Des fromages produits de façon artisanale et en petite série dont la distribution reste souvent très locale. Comme le Chèvre Fleur, spécifique à la Provence, ce fromage au lait cru de chèvre est préparé de façon traditionnelle dans un torchon qui lui donne sa forme si particulière...</p>
+    <div class="presentation-e">
+        <div class="produitArticle">
+            <!--<h2>L'Exclusivité du mois</h2>-->
+            <svg>
+            <symbol id="text">
+            <text text-anchor="middle" x="50%" y="50%">EXCLUSIVITE</text>
+            </symbol>
+            <use xlink:href="#text"></use>
+            </svg>
+            <img src="assets/img/produit/<?= htmlspecialchars($esclusivite['picture']) ;?>" alt="<?= htmlspecialchars($esclusivite['name']) ;?>">
+            <p>L'exclusivité a ne pas manqué ! </p>
+            <a class="btn" href="index.php?controller=product&action=show&id=<?= intval($esclusivite['id']); ?>" title="detail du produit ">JE DECOUVRE</a>
+        </div>
+        <section class="produitArticle">
+            <h2>Spécialité</h2>
+            <img src="assets/img/no-photo.png" alt="no-photo">
+            <p> un slag </p>
+            <a class="btn" href="#">JE DECOUVRE</a>
+        </section>
+    </div>
+</article>

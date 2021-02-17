@@ -1,0 +1,41 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil /</a><a href="index.php?controller=hometray&action=index" title="accueil plateau evenement"> Plateau évènement </a></p>
+<h2 class="signe"><img src="assets/img/logo/signeG.svg" alt="signeG"><span> PLATEAU EVENEMENT<img src="assets/img/logo/signeD.svg" alt="signeD"></span></h2>
+<p>À déguster sans attendre… Ces compositions sont l’expression de notre savoir-faire. Des grands classiques aux découvertes en passant par nos spécialités. Une plateau fromage évènement, c'est un plateau de fromage avec une belle histoire. Une sélection des meilleurs fromages de France directement chez vous.</p>
+<div class="page-plateau ">
+  <?php foreach ($trs as $tr) : ?>
+    <section class=" accueilPlateau ">
+      <form method="post" class="basket show">
+        <h3><a href="index.php?controller=hometray&action=show&id=<?= intval($tr['id']); ?>" title="detail du plateau "><?=  htmlspecialchars($tr['name']); ?></a></h3>
+        <div class="compo_plateau produit_Article">
+          <img src="assets/img/produit/<?=  htmlspecialchars($tr['picture']); ?>" alt="<?=  htmlspecialchars($tr['picture']); ?>">
+          <div class="prix">
+            <ul>
+              <li><i> Prix : <?=  htmlspecialchars($tr['salePrice']); ?> €</i></li>
+              <li><i>nbr produit</i></li>
+              <li>
+                <i> Qté </i>
+                <input  name="quantite" class="quantite" type="number" min="1" max="<?= htmlspecialchars($tr['quantityInStock']); ?>" value="1" required>
+                <input type="hidden" name="picture" value="assets/img/produit/<?= htmlspecialchars($tr['picture']); ?>">
+                <input type="hidden" name="productName" value="<?=  htmlspecialchars($tr['name']); ?>">
+                <input type="hidden" name="productId" value="<?=  htmlspecialchars($tr['id']); ?>">
+                <input type="hidden" name="salePrice" value="<?=  htmlspecialchars($tr['salePrice']); ?>">
+                <input type="hidden" name="weight" value="<?=  htmlspecialchars($tr['WeightName']); ?>">
+                <input type="hidden" name="type" value="tray">
+              </li>
+            </ul>
+            <button class="btn button_ajout" type="submit">AJOUTER</button>
+          </div>
+          <div class="text">
+            <p><?= substr( htmlspecialchars($tr['description']), 0, 120); ?></p>
+            <a href="index.php?controller=hometray&action=show&id=<?= intval($tr['id']); ?>" title="detail du plateau">En lire plus ></a>
+          </div>
+        </div>
+      </form>
+    </section>
+  <?php endforeach; ?>
+</div>
+<div id="info">
+  <p>Produit ajouter à votre panier</p>
+  <a href="index.php?controller=product&action=index" title=" page d'accueil des produits" class="btn">POURSUIVRE</a>
+  <a href="index.php?controller=basket&action=index" title="mon panier" class="btn">ALLER AU PANIER</a>
+</div>

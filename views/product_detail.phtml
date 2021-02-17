@@ -1,0 +1,65 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil /</a><a href="index.php?controller=product&action=index" title="page'daccueil des produits">Commande à la carte /</a> <?= htmlspecialchars($product['name']); ?></p>
+<h2><img src="assets/img/logo/signeG.svg" alt="signeG"><span class="name"> <?= htmlspecialchars($product['name']); ?></span><img src="assets/img/logo/signeD.svg" alt="signeD"></h2>
+<div class="article_Detail">
+  <div class="produitDetail">
+    <img src="assets/img/produit/<?= htmlspecialchars($product['picture']); ?>" alt="<?= htmlspecialchars($product['picture']); ?>">
+    <div class="prix flex-c">
+      <form  method="post" class="basket show">
+        <ul>
+          <li>Prix :<i class="salePrice"><?= htmlspecialchars($product['salePrice']); ?> €</i></li>
+          <li><i> Poids : <?= htmlspecialchars($product['weightName']); ?></i></li>
+        </ul>
+        <ul>
+          <li><i>Qté</i></li>
+          <li><input name="quantite" class="quantite" type="number" min="1" max="<?= htmlspecialchars($product['quantityInStock'])?>" value="1" required>
+          <input type="hidden" name="picture" value="assets/img/produit/<?= htmlspecialchars($product['picture']); ?>">
+          <input type="hidden" name="productName" value="<?= htmlspecialchars($product['name']); ?>">
+          <input type="hidden" name="productId" value="<?= htmlspecialchars($product['id']); ?>">
+          <input type="hidden" name="salePrice" value="<?= htmlspecialchars($product['salePrice']); ?>">
+          <input type="hidden" name="weight" value="<?= htmlspecialchars($product['weightName']); ?>">
+          <input type="hidden" name="type" value="produit">
+          </li>
+        </ul>
+       <button class="btn button_ajout" type="submit">AJOUTER</button>
+      </form>
+    </div>
+  </div>
+  <section class="flex-c description">
+    <p>In his tractibus navigerum nusquam visitur flumen sed in locis plurimis aquae suapte natura calentes emergunt ad usus aptae multiplicium medelarum. verum has quoque regiones pari sorte Pompeius Iudaeis domitis et Hierosolymis captis in provinciae speciem delata iuris dictione formavit.
+      Mox dicta finierat, multitudo omnis ad, quae imperator voluit, promptior laudato consilio consensit in pacem ea ratione maxime percita, quod norat</p>
+    <div class="Caracteristique">
+      <div class="flex-c profilCaractere">
+        <h3>Profil de caractère</h3>
+        <span><?= htmlspecialchars($product['milkName']); ?></span>
+        <div class="format-coupe">
+          <img src="assets/img/shape/<?= htmlspecialchars($product['shapePicture']); ?>" alt="format/coupe">
+          <img src="assets/img/knife/<?= htmlspecialchars($product['knifePicture']); ?>" alt="format/coupe">
+        </div>
+        <span><?= htmlspecialchars($product['doughName']); ?></span>
+      </div>
+      <div class="profilCaractere">
+        <h3>Conseil dégustation :</h3>
+        <?= htmlspecialchars($product['conseil_degustation']); ?>
+      </div>
+    </div>
+  </section>
+  <section class="region">
+    <h3><?= htmlspecialchars($product['regionName']); ?></h3>
+    <a href="index.php?controller=product&action=GetAllByRegion&id_region=<?= htmlspecialchars($product['id_region']); ?>" title ="redirection vers les produit de la région <?= $product['regionName']; ?> "><img src="assets/img/region/<?= $product['regionPicture']; ?>" alt="carte region <?= $product['regionName']; ?>"></a>
+    <div class=" vin">
+      <img src="assets/img/vin.svg" alt="logo vin">
+      <?php if ($wine1 == null && ($wine2 == null)) : ?>
+        <p>aucune suggestion</p>
+      <?php elseif ($wine1 != null && ($wine2 == null)) : ?>
+        <p><?= htmlspecialchars($wine1['name']); ?></p>
+      <?php else : ?>
+        <p><?= htmlspecialchars($wine1['name']); ?><br><?= htmlspecialchars($wine2['name']); ?></p>
+      <?php endif ?>
+    </div>
+  </section>
+</div>
+<div id="info">
+  <p>Produit ajouter à votre panier</p>
+  <a href="index.php?controller=product&action=index" title="accueil du produit" class="btn">POURSUIVRE</a>
+  <a href="index.php?controller=basket&action=index" title="affichage du panier" class="btn">ALLER AU PANIER</a>
+</div>

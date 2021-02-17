@@ -1,0 +1,36 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil /</a><a href="index.php?controller=homeadmin&action=index" title="accueil admin">Administration /</a> Détail du message de <?= $message['lastName'] ?> <?= $message['firstName'] ?></p>
+<h2><img src="assets/img/logo/signeG.svg" alt="signeG"><span> GESTION DES MESSAGES<img src="assets/img/logo/signeD.svg" alt="signeD"></span></h2>
+<div class="list_product">
+  <?php include 'aside_bar.phtml' ?>
+  <div class=table-list>
+    <h3>LISTES DES MESSAGES</h3>
+    <div class="generic-form  edit-form message">
+      <fieldset>
+        <legend><i class="fa fa-book"></i> Message </legend>
+        <table id="table-form">
+          <tbody>
+            <tr>
+              <td>Email : </td>
+              <td><?= htmlspecialchars($message['email']) ?></td>
+            </tr>
+            <tr>
+              <td>Nom et prénom </td>
+              <td><?= htmlspecialchars($message['lastName']) ?> <?= htmlspecialchars($message['firstName']) ?></td>
+            </tr>
+            <tr>
+              <td>Sujet : </td>
+              <td><?= htmlspecialchars($message['sujet']) ?></td>
+            </tr>
+            <tr>
+              <td>Message : </td>
+              <td><?= htmlspecialchars($message['content']) ?></td>
+            </tr>
+          </tbody>
+        </table>
+        <a class='btn' href="mailto:<?= htmlspecialchars($message['email'])?>?subject=<?= str_replace(' ','',htmlspecialchars($message['sujet'])) ?>de<?= htmlspecialchars($message['lastName'])?><?= htmlspecialchars($message['firstName'])?>&body=<?=str_replace(' ','',htmlspecialchars( $message['content'])) ?>" title="redirection vers la messagerie"><i class=" fas fa-envelope"></i>
+              </a>
+        <a class='btn' href="index.php?controller=messageadmin&action=index" title="retour à la liste des messages">RETOUR</a>
+      </fieldset>
+    </div>
+  </div>
+</div>

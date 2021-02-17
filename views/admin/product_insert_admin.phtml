@@ -1,0 +1,134 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil /</a><a href="index.php?controller=homeadmin&action=index" title="accueil admin">Administration /</a> Créer un produit </p>
+<h2><img src="assets/img/logo/signeG.svg" alt="signeG"><span> GESTION DES PRODUITS<img src="assets/img/logo/signeD.svg" alt="signeD"></span></h2>
+<div class=" list_product">
+  <?php include 'aside_bar.phtml' ?>
+  <div class=table-list>
+    <a class="btn" href="index.php?controller=homeadmin&action=insert" title="insertion d'un nouveau produit"><i class="fas fa-plus"></i> Créer un produit</a>
+    <form action="index.php?controller=homeadmin&action=insert" method="POST" class="generic-form edit-form" enctype="multipart/form-data">
+      <fieldset>
+        <legend> <i class="fas fa-pen-nib"></i> modifier un produit</legend>
+        <ul>
+          <li>
+            <label for="Name_product">Nom du produit</label>
+            <input type="text" name="Name_product" id="Name_product" placeholder="Nom du produit">
+          </li>
+          <li>
+            <label for="Description_product">Description du produit</label>
+            <textarea name="Description_product" id="Description_product" placeholder="Description"></textarea>
+          </li>
+          <li>
+            <label for="Name_milk">Type de lait</label>
+            <select name="Name_milk" id="Name_milk">
+              <option value="">--choisissez un lait--</option>
+              <?php foreach ($milks as $milk) : ?>
+                <option value="<?= htmlspecialchars($milk['id']) ?>"><?= htmlspecialchars($milk['name']) ?></option>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="Name_dough">Type de pâte</label>
+            <select name="Name_dough" id="Name_dough">
+              <option value="">--choisissez un type de pâte--</option>
+              <?php foreach ($doughs as $dough) : ?>
+                <option value="<?= htmlspecialchars($dough['id']) ?>">
+                  <?= htmlspecialchars($dough['name']) ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="Name_shape">forme</label>
+            <select name="Name_shape" id="Name_shape">
+              <option value="">--choisissez une forme--</option>
+              <?php foreach ($shapes as $shape) : ?>
+                <option value="<?= htmlspecialchars($shape['id']) ?>">
+                  <?= htmlspecialchars($shape['name']) ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="Name_knife">Type de couteau</label>
+            <select name="Name_knife" id="Name_knife">
+              <option value="">--choisissez un type de couteau--</option>
+              <?php foreach ($knifes as $knife) : ?>
+                <option value="<?= htmlspecialchars($knife['id']) ?>">
+                  <?= htmlspecialchars($knife['name']) ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="Name_region">Région</label>
+            <select name="Name_region" id="Name_region">
+              <option value="">--choisissez une région--</option>
+              <?php foreach ($regions as $region) : ?>
+                <option value="<?= htmlspecialchars($region['id']) ?>">
+                  <?= htmlspecialchars($region['name']) ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="Name_wine1">Vin 1</label>
+            <select name="Name_wine1" id="Name_wine1">
+              <option value="">--choisissez un vin--</option>
+              <?php foreach ($wines as $wine) : ?>
+                <option value="<?= htmlspecialchars($wine['id']) ?>">
+                  <?= htmlspecialchars($wine['name']) ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="Name_wine2">Vin 2</label>
+            <select name="Name_wine2" id="Name_wine2">
+              <option value="">--choisissez un vin--</option>
+              <?php foreach ($wines as $wine) : ?>
+                <option value="<?= htmlspecialchars($wine['id']) ?>">
+                  <?= htmlspecialchars($wine['name']) ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="QuantityInStock">Quantité en stock</label>
+            <input type="text" name="QuantityInStock" id="QuantityInStock" placeholder="quantité en stock">
+          </li>
+          <li>
+            <label for="Poids">Poids</label>
+            <select name="Poids" id="Poids">
+              <option value="null">--choisissez un poids--</option>
+              <?php foreach ($weights as $weight) : ?>
+                <option value="<?= htmlspecialchars($weight['id']) ?>">
+                  <?= htmlspecialchars($weight['name']) ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
+          </li>
+          <li>
+            <label for="BuyPrice">Prix d'achat</label>
+            <input type="text" name="BuyPrice" id="BuyPrice" placeholder="prix d'achat">
+          </li>
+          <li>
+            <label for="SalePrice">Prix de vente</label>
+            <input type="text" name="SalePrice" id="SalePrice" placeholder="prix de vente">
+          </li>
+          <li>
+            <label for="exclusivity">exclusivité</label>
+            <input type="text" name="exclusivity" id="exclusivity" placeholder="exclusivite">
+          </li>
+          <li>
+            <label for="Conseil_degustation">Conseil dégustation</label>
+            <textarea name="Conseil_degustation" id="Conseil_degustation" placeholder="conseil de dégustation"></textarea>
+          </li>
+          <li>
+            <input type="file" name="Picture">
+          </li>
+        </ul>
+        <button class="btn" type="submit" name="insert_product">ENREGISTRER</button>
+        <a class="btn" href="index.php?controller=homeadmin&action=index" title="retour à la liste des produits">RETOUR</a>
+      </fieldset>
+    </form>
+  </div>
+</div>

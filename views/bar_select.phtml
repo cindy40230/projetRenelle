@@ -1,0 +1,46 @@
+<aside class="bar-select generic">
+  <h2>Fromage à la carte</h2>
+  <p>Notre fromagerie en ligne, vous propose de faire votre propre sélection! Choisissez selon vos goûts parmi les meilleurs fromages de France pour un grand moment de plaisir.</p>
+  <form method="POST" action="index.php?controller=product&action=select" class="select">
+    <div class="flex-c">
+      <label for="milk-select">Type de lait</label>
+      <select name="milk" id="milk-select" class="select-style">
+        <option value="">--choisissez un lait--</option>
+        <?php foreach ($milks as $milk) : ?>
+          <option value="<?= htmlspecialchars($milk['id']) ?>"><?= htmlspecialchars($milk['name']) ?></option>
+        <?php endforeach; ?>
+      </select>
+    </div>
+    <div class="flex-c">
+      <label for="dough-select">Type de Pâte</label>
+      <select name="dough" id="dough-select" class="select-style">
+        <option value="">--choisissez un type de pâte--</option>
+        <?php foreach ($doughs as $dough) : ?>
+          <option value="<?= htmlspecialchars($dough['id']) ?>"><?= htmlspecialchars($dough['name']) ?></option>
+        <?php endforeach; ?>
+      </select>
+    </div>
+    <div class="flex-c">
+      <label for="region-select">Régions</label>
+      <select name="region" id="region-select" class="select-style">
+        <option value="">--choisissez une Région--</option>
+        <?php foreach ($regions as $region) : ?>
+          <option value="<?= htmlspecialchars($region['id']) ?>"><?= htmlspecialchars($region['name']) ?></option>
+        <?php endforeach; ?>
+      </select>
+      <button type="submit" class="btn">FILTRER</button>
+    </div>
+  </form>
+  <div class="flex-cc exclusivite">
+    <h2>L'Exclusivité du mois</h2>
+    <p><?= htmlspecialchars($esclusivite['name']); ?></p>
+    <img class="img-home" src="assets/img/produit/<?= htmlspecialchars($esclusivite['picture']); ?>" alt="<?= htmlspecialchars($esclusivite['picture']); ?>">
+    <div class="prix">
+      <ul>
+        <li><i> Prix : <?= htmlspecialchars($esclusivite['salePrice']); ?> € </i></li>
+        <li><i> Poids : <?= htmlspecialchars($esclusivite['weightName']); ?></i></li>
+      </ul>
+    </div>
+    <a class="btn" href="index.php?controleur=product&action=show&id=<?= intval($esclusivite['id']); ?>" title="decouverte du produit esclusivite">DECOUVRIR</a>
+  </div>
+</aside>

@@ -1,0 +1,49 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil /</a><a href="index.php?controller=basket&action=index" title="mon panier">Mon panier</a></p>
+<h2><img src="assets/img/logo/signeG.svg" alt="signeG"><span> MON PANIER</span><img src="assets/img/logo/signeD.svg" alt="signeD"></h2>
+<nav class="nav-basket">
+  <ul>
+    <li class="active"><a href="index.php?controller=login&action=index" title="page de connexion"><i class="fa fa-user " aria-hidden="true"></i> Connexion</a></li>
+    <li><a href="index.php?controller=basket&action=validateorder" title="validation du panier"><i class="fa fa-check" aria-hidden="true"></i> Valider </a></li>
+    <li><a href="index.php?controller=basket&action=shipping" title="frais de port"><i class="fa fa-truck" aria-hidden="true"></i> Frais de port</a></li>
+    <li><a href="index.php?controller=payment&action=index" title="page paiement"><i class="fa fa-credit-card" aria-hidden="true"></i> Paiement</a></li>
+  </ul>
+</nav>
+<form method="POST" class="form-basket tbbasket">
+  <table class="generic-table product-list ">
+    <thead>
+      <tr>
+        <th>PRODUIT</th>
+        <th></th>
+        <th class="number">prix</th>
+        <th class="number">Quantité </th>
+        <th class="number">Total</th>
+        <th class="number"></th>
+      </tr>
+    </thead>
+    <tbody id="panier1">
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4">Total panier</td>
+        <td class="number" colspan="1" id="totale"></td>
+        <td></td>
+      </tr>
+      <tr hidden>
+        <td colspan="4">Poids</td>
+        <td class="number" colspan="1" id="totalePoids">kg</td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+  <a href="index.php?controller=product&action=index" title="retour à l'accueil produit" class="btn">RETOUR </a>
+  <button class="btn" id="removeBasket"> SUPPRIMER </button>
+  <a href="index.php?controller=basket&action=validateorder" title="continuer pour valider la commande" class="btn">CONTINUER</a>
+</form>
+<div class="hidden form-basket generic-form ">
+  <fieldset>
+    <legend>Récapitulatif du Panier</legend>
+    <p>Vous n'avez sélectionné aucun article.</p>
+    <p>Visitez la boutique et faites votre choix.</p>
+    <a href="index.php?controller=product&action=index" title="retour à l'accueil produit" class="btn">RETOUR A LA BOUTIQUE</a>
+  </fieldset>
+</div>

@@ -1,0 +1,24 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil /</a><a href="index.php?controller=homeadmin&action=index" title="accueil admin">Administration /</a> Modifier une forme </p>
+<h2><img src="assets/img/logo/signeG.svg" alt="signeG"><span> GESTION DES FORMES<img src="assets/img/logo/signeD.svg" alt="signeD"></span></h2>
+<div class="list_product">
+  <?php include 'aside_bar.phtml' ?>
+  <div class=table-list>
+    <a class="btn" href="index.php?controller=shapeadmin&action=insert" title="insertion nouvelle forme"><i class="fas fa-plus"></i> Créer une forme</a>
+    <form method="POST" class="generic-form edit-form" enctype="multipart/form-data">
+      <fieldset>
+        <legend> <i class="fas fa-pen-nib"></i> modifier une forme</legend>
+        <ul>
+          <li>
+            <label for="Name_shape">Nom de la forme</label>
+            <input type="text" name="Name_shape" id="Name_shape" placeholder="Nom de la forme" value="<?= htmlspecialchars($shape['name']) ?>">
+          </li>
+          <li>
+            <input type="file" name="Picture_shape">
+          </li>
+        </ul>
+        <button class="btn" type="submit">ENREGISTRER</button>
+        <a class="btn" href="index.php?controller=shapeadmin&action=index" title="retour à la liste des formes">RETOUR</a>
+      </fieldset>
+    </form>
+  </div>
+</div>

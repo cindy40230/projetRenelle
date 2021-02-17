@@ -1,0 +1,76 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil </a> / Administration / Modifier la commande</p>
+<h2 class="signe"><img src="assets/img/logo/signeG.svg" alt="signeG"><span>GESTION DES COMMANDES<img src="assets/img/logo/signeD.svg" alt="signeD"></span></h2>
+<div class="flex1 list_product">
+  <?php include 'aside_bar.phtml' ?>
+  <div class=table-list>
+    <form method="POST" class="generic-form edit-form" enctype="multipart/form-data">
+      <fieldset>
+        <legend> <i class="fas fa-pen-nib"></i> modifier une commande</legend>
+        <table id="table-form">
+          <tr>
+            <td>Numéro de commande: </td>
+            <td><?= htmlspecialchars($order['id']) ?>
+              <input hidden type="text" name="Order_id" id="Order_id" value="<?= htmlspecialchars($order['id']) ?>">
+            </td>
+          </tr>
+          <tr>
+            <td>Numero Utilisateur: </td>
+            <td><?= htmlspecialchars($order['user_id']) ?>
+              <input hidden type="text" name="User_id" id="User_id" value="<?= htmlspecialchars($order['user_id']) ?>">
+            </td>
+          </tr>
+          <tr>
+            <td> Prix Total de la commande: </td>
+            <td><?= htmlspecialchars($order['totalAmount']) ?> €
+              <input hidden type="text" name="TotalAmount" id="TotalAmount" value="<?= htmlspecialchars($order['totalAmount']) ?>">
+            </td>
+          </tr>
+          <tr>
+            <td>Montant Taxe :</td>
+            <td> <?= htmlspecialchars($order['taxRate']) ?> %
+              <input hidden type="text" name="TaxRate" id="TaxRate" value="<?= htmlspecialchars($order['taxRate']) ?>">
+            </td>
+          </tr>
+          <tr>
+            <td>Taxe de la commande : </td>
+            <td><?= htmlspecialchars($order['taxAmount']) ?> €
+              <input hidden type="text" name="TaxAmount" id="TaxAmount" value="<?= htmlspecialchars($order['taxAmount']) ?>">
+            </td>
+          </tr>
+          <tr>
+            <td>Poids de la commande : </td>
+            <td><?= htmlspecialchars($order['weightTotal']) ?> kg
+              <input hidden type="text" name="weightTotal" id="weightTotal" value="<?= htmlspecialchars($order['weightTotal']) ?>">
+            </td>
+          </tr>
+          <tr>
+            <td>date de commande : </td>
+            <td><?= htmlspecialchars($order['orderDate']) ?>
+              <input hidden type="text" name="date" id="date" value="<?= htmlspecialchars($order['orderDate']) ?>">
+            </td>
+          </tr>
+          <tr>
+            <td>Statut:</td>
+            <td>
+              <select name="statut" id="statut">
+                <?php foreach ($statuts as $statut) : ?>
+                  <?php if ($statut['id'] == $order['statut_id']) : ?>
+                    <option value="<?= htmlspecialchars($statut['id']) ?>" selected>
+                      <?= htmlspecialchars($statut['name']) ?>
+                    </option>
+                  <?php else : ?>
+                    <option value="<?= htmlspecialchars($statut['id']) ?>">
+                      <?= htmlspecialchars($statut['name']) ?>
+                    </option>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+              </select>
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+      <button class="btn" type="submit">ENREGISTRER</button>
+      <a class="btn" href="index.php?controller=orderadmin&action=index" title="retour à liste des commandes" >RETOUR</a>
+    </form>
+  </div>
+</div>

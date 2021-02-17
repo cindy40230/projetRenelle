@@ -1,0 +1,28 @@
+<p class="lien"><a href="index.php?controller=home&action=index" title="retour à l'accueil"><i class="fa fa-home"></i> Accueil /</a><a href="index.php?controller=homeadmin&action=index" title="accueil admin">Administration /</a> Créer une catégorie </p>
+<h2><img src="assets/img/logo/signeG.svg" alt="signeG"><span> GESTION DES CATEGORIES<img src="assets/img/logo/signeD.svg" alt="signeD"></span></h2>
+<div class="list_product">
+  <?php include 'aside_bar.phtml' ?>
+  <div class=table-list>
+    <a class="btn" href="index.php?controller=categoryadmin&action=insert" title="insertion d'une nouvelle categorie"><i class="fas fa-plus"></i> Créer une catégorie</a>
+    <?php if ($flash->hasMessages() == true) : ?>
+      <div class="flash">
+        <?php foreach ($flash->fetchMessages() as $message) : ?>
+          <p><?= htmlspecialchars($message) ?></p>
+        <?php endforeach ?>
+      </div>
+    <?php endif; ?>
+    <form method="POST" class="generic-form edit-form">
+      <fieldset>
+        <legend> <i class="fas fa-pen-nib"></i> créer d'une catégorie</legend>
+        <ul>
+          <li>
+            <label for="Name_category">Nom de la catégorie</label>
+            <input type="text" name="Name_category" id="Name_category" placeholder="Nom de la catégorie">
+          </li>
+        </ul>
+        <button class="btn" type="submit">ENREGISTRER</button>
+        <a class="btn" href="index.php?controller=categoryadmin&action=index" title="retour à la list des laits">RETOUR</a>
+      </fieldset>
+    </form>
+  </div>
+</div>
